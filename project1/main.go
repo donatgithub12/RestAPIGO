@@ -32,7 +32,7 @@ func main() {
 		MaxAge: 12 * time.Hour,
 	}))
 	router.POST("/save_form", FormHandler)
-/* 	router.GET("/get_image", ImageHandler) */
+	/* 	router.GET("/get_image", ImageHandler) */
 	router.Run(":8080")
 }
 func FormHandler(c *gin.Context) {
@@ -41,7 +41,7 @@ func FormHandler(c *gin.Context) {
 	if err != nil {
 		fmt.Println(err)
 	}
-
+	fmt.Println(data)
 	db := DBconnect()
 	defer db.Close()
 
@@ -55,6 +55,7 @@ func FormHandler(c *gin.Context) {
 		"message": "data saved",
 	})
 }
+
 /* func ImageHandler(c *gin.Context) {
 	var data FormData
 	err := c.BindJSON(&data)
